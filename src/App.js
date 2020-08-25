@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Emoji from "./components/Emoji";
+//import IngredientsComponent from "./components/IngredientsComponent";
+import SearchIngredientsComponent from "./components/SearchIngredients/SearchIngredients.component";
+import "./App.css";
 
-function App() {
+const App = () => {
+  //const [apiUrl, setApiUrl] = useState("");
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div style={{ display: "inline-block" }}>
+          <Emoji symbol="🌮" label="taco" />
+          <span style={{ margin: "10px" }}>
+            Guac <i>Tandem</i>onium
+          </span>
+          <Emoji symbol="🌮" label="taco" />
+        </div>
       </header>
+      <div style={{ margin: "5px" }}>
+        <SearchIngredientsComponent />
+        {/*  <form onSubmit={handleSubmit}>*/}
+        {/*    <input*/}
+        {/*      type="text"*/}
+        {/*      name="recipe-api"*/}
+        {/*      style={{ margin: "5px" }}*/}
+        {/*      placeholder={`Enter Your Recipe API`}*/}
+        {/*      value={apiUrl}*/}
+        {/*      onChange={() => handleChange}*/}
+        {/*    />*/}
+        {/*    <input type="submit" value="submit" />*/}
+        {/*  </form>*/}
+      </div>
+      {/*<IngredientsComponent apiUrl={apiUrl} />*/}
     </div>
   );
-}
+};
 
 export default App;
