@@ -1,11 +1,26 @@
 import React, { useState } from "react";
 import Emoji from "./components/Emoji";
-//import IngredientsComponent from "./components/IngredientsComponent";
-import SearchIngredientsComponent from "./components/SearchIngredients/SearchIngredients.component";
+//import RecipesComponent from "./components/RecipesComponent";
+import SearchRecipesComponent from "./components/SearchRecipes/SearchRecipes.component";
 import "./App.css";
 
+//const API_KEY = "";
+
 const App = () => {
-  //const [apiUrl, setApiUrl] = useState("");
+  const [recipes, setRecipes] = useState([]);
+
+  const getRecipe = async (e) => {
+    const searchValue = e.target.elements.searchRecipeValue.value;
+    e.preventDefault(); // need to prevent page refresh
+    const api_call = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`
+    );
+    const data = await api_call.json();
+    setRecipes(data.meals);
+    console.log(searchValue);
+  };
+
+  console.log(recipes);
 
   return (
     <div className="App">
@@ -19,7 +34,20 @@ const App = () => {
         </div>
       </header>
       <div style={{ margin: "5px" }}>
-        <SearchIngredientsComponent />
+        <SearchRecipesComponent getRecipe={getRecipe} />
+        {console.log(recipes)}
+        {recipes.map((recipe) => {
+          return (
+            <div>
+              <img
+                src={recipe.strMealThumb}
+                style={{ height: "150px", width: "150px" }}
+                alt={recipe.strMeal}
+              />
+              <p key={recipe.idMeal}>{recipe.strMeal}</p>
+            </div>
+          );
+        })}
         {/*  <form onSubmit={handleSubmit}>*/}
         {/*    <input*/}
         {/*      type="text"*/}
@@ -32,7 +60,7 @@ const App = () => {
         {/*    <input type="submit" value="submit" />*/}
         {/*  </form>*/}
       </div>
-      {/*<IngredientsComponent apiUrl={apiUrl} />*/}
+      {/*<RecipesComponent apiUrl={apiUrl} />*/}
     </div>
   );
 };
