@@ -7,8 +7,7 @@ I am using a ReactJS as my framework of choice with JavaScript for this applicat
 My assumptions for dietary restrictions:  
 	* Dairy-free
 	* Halal  
-	* Vegan  
-	* Vegetarian  
+	* Vegan, Vegetarian - https://github.com/hmontazeri/is-vegan
 	* Nut-free  
 	* Gluten-free      
 https://api.spoonacular.com/food/products/search?query=yogurt&apiKey=ad652495f0b142b4bc557a824e3df4f2

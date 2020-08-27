@@ -1,0 +1,18 @@
+{
+  "dairy-free": [
+    "milk",
+    "sour cream",
+    "butter",
+    "cheese"
+  ],
+  "nut-free": [
+    "peanut",
+    "almond",
+    "walnut",
+    "pecan",
+    "cashew"
+  ],
+  "halal": [
+    "pork"
+  ]
+}

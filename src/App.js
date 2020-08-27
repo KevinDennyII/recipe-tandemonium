@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Emoji from "./components/Emoji";
 //import RecipesComponent from "./components/RecipesComponent";
 import SearchRecipes from "./components/SearchRecipes/SearchRecipes.component";
@@ -11,7 +11,7 @@ const App = () => {
 
   // this will grab the search value and will be used as the query on the api call
   // instead of using the .then().then "callback hell" notation, i decided to use the
-  // async/await call as it is much more readable...readability was the main goal here.ß
+  // async/await call as it is much more readable...readability was the main goal here.
   const getRecipe = async (e) => {
     const searchValue = e.target.elements.searchRecipeValue.value;
     e.preventDefault(); // need to prevent page refresh
@@ -20,10 +20,12 @@ const App = () => {
     );
     const data = await api_call.json();
     setRecipes(data.meals);
-    console.log(searchValue);
   };
 
-  console.log(recipes);
+  useEffect(() => {
+    const recipeJSON = JSON.stringify(recipes);
+    localStorage.setItem("recipes", recipeJSON);
+  }, [recipes]);
 
   return (
     <div className="App">
