@@ -12,14 +12,23 @@ const App = () => {
   // this will grab the search value and will be used as the query on the api call
   // instead of using the .then().then "callback hell" notation, i decided to use the
   // async/await call as it is much more readable...readability was the main goal here.
-  const getRecipe = async (e) => {
-    const searchValue = e.target.elements.searchRecipeValue.value;
-    e.preventDefault(); // need to prevent page refresh
+  const loadTacoRecipes = async () => {
     const api_call = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=taco`
     );
     const data = await api_call.json();
     setRecipes(data.meals);
+  };
+
+  useEffect(() => {
+    loadTacoRecipes();
+  }, []);
+
+  const getRecipe = async (e) => {
+    const searchValue = e.target.elements.searchRecipeValue.value;
+    e.preventDefault(); // need to prevent page refresh
+    recipes.filter((recipe) => {});
+    console.log(searchValue);
   };
 
   useEffect(() => {
