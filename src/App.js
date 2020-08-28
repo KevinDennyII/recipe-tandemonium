@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Emoji from "./components/Emoji";
-//import RecipesComponent from "./components/RecipesComponent";
 import SearchRecipes from "./components/SearchRecipes/SearchRecipes.component";
 import Recipes from "./components/Recipes/Recipes.component";
 import "./App.css";
@@ -14,7 +13,7 @@ const App = () => {
   // async/await call as it is much more readable...readability was the main goal here.
   const loadTacoRecipes = async () => {
     const api_call = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=taco`
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=sandwich`
     );
     const data = await api_call.json();
     setRecipes(data.meals);
@@ -24,16 +23,23 @@ const App = () => {
     loadTacoRecipes();
   }, []);
 
-  const getRecipe = async (e) => {
-    const searchValue = e.target.elements.searchRecipeValue.value;
-    e.preventDefault(); // need to prevent page refresh
-    recipes.filter((recipe) => {});
-    console.log(searchValue);
+  // grabbing recipes based on the events from the Search Recipes Component
+  const getRecipes = (e) => {
+    // Here I am setting default values to prevent undefined errors from occurring
+    if (!typeof e.target.elements === undefined) {
+      const searchValue = e.target.elements.searchRecipeValue.value;
+      e.preventDefault(); // need to prevent page refresh
+      const results = recipes.filter((recipe) => {
+        const recipeNameLowerCase = recipe.strMeal.toLowerCase();
+        return recipeNameLowerCase.includes(searchValue);
+      });
+      setRecipes(results);
+    }
   };
 
   useEffect(() => {
     const recipeJSON = JSON.stringify(recipes);
-    localStorage.setItem("recipes", recipeJSON);
+    localStorage.setItem("originalListOfRecipes", recipeJSON);
   }, [recipes]);
 
   return (
@@ -48,7 +54,7 @@ const App = () => {
         </div>
       </header>
       <div style={{ margin: "5px" }}>
-        <SearchRecipes getRecipe={getRecipe} />
+        <SearchRecipes getRecipes={getRecipes} />
         <Recipes recipes={recipes} />
       </div>
     </div>

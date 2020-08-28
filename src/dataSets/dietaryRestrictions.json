@@ -1,18 +1,24 @@
 {
-  "dairy-free": [
+  "Dairy-Free": [
     "milk",
     "sour cream",
+    "soured cream",
     "butter",
     "cheese"
   ],
-  "nut-free": [
+  "Nut-Free": [
     "peanut",
     "almond",
     "walnut",
     "pecan",
     "cashew"
   ],
-  "halal": [
+  "Halal": [
     "pork"
+  ],
+  "Gluten-Free": [
+    "flour",
+    "wheat",
+    "couscous"
   ]
 }
