@@ -1,6 +1,9 @@
 # Welcome to Recipe *Tandem*onium!
 This started as a coding challenge and then I challenged my self to take a step further.
 
+## Run the App
+Simply run `yarn install` on the root folder then run `yarn start`
+
 ## Design
 A freecodecademy.org course from a couple years back was my inspiration behind the design and template of the app, using create-react-app for the initial creation.
 
