@@ -1,7 +1,5 @@
-# Welcome to Taco *Tandem*onium!
-Guac is *not* extra, cause it's on me 😉
-
-I am using a ReactJS as my framework of choice with JavaScript for this application as this is, currently, at the forefront of my mind.  I am also choosing to persist the data to local storage.  For something simple like taco recipes, I think this would be pretty efficient because my assumption is that we will not be dealing with millions of records.
+# Welcome to Recipe *Tandem*onium!
+This started as a coding challenge and then I challenged my self to take a step further.
 
 ## Design
 A freecodecademy.org course from a couple years back was my inspiration behind the design and template of the app, using create-react-app for the initial creation.
@@ -69,7 +67,5 @@ I did not implement the *easy* swapping of APIs but I would have implemented a s
 
 - I did not use redux because I did not have the confidence to use at this time.
 
-## Final Comments
-I do plan to use this and building up where or not I join the Tandem family.  It was fun to bang my head a little to create this!
-    
-Thank you for considering me and putting me in fron of this challenge. 👨🏾‍💻🌮
+## Final Thoughts
+Thank you for checking out my repository. 👨🏾‍💻🌮
